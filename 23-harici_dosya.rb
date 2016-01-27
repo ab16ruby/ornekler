@@ -1,0 +1,1 @@
+puts "Merhaba, ben harici bir dosyayım."

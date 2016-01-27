@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+require_relative "kisi"
+require_relative "adresdefteri"
+
+print "Defter adınız ne olsun:"
+defter_adi = gets.chomp
+puts "Defter adı olarak #{defter_adi} seçildi"
+
+defter = AdresDefteri.new(defter_adi)
+
+loop do
+  puts "Ne yapmak istersiniz:"
+  puts "\t1) Listele"
+  puts "\t2) Ekle"
+  puts "\t3) Çıkış"
+
+  islem = gets.chomp.to_i
+
+  case islem
+    when 1
+      i = 0
+      defter.kisiler.each do |kisi|
+        puts "#{i = i.next} -> #{kisi.ad} #{kisi.soyad} (#{kisi.yas} - #{kisi.sehir}) - #{kisi.tel} <#{kisi.eposta}>"
+      end
+    when 2
+      veriler = []
+      print "Adınız:"
+      veriler << gets.chomp
+      print "Soyadınız:"
+      veriler << gets.chomp
+      print "Şehir:"
+      veriler << gets.chomp
+      print "Doğum Tarihi (gün/ay/yıl):"
+      veriler << gets.chomp
+      print "Telefon Numarası:"
+      veriler << gets.chomp
+      print "E-Posta Adresi:"
+      veriler << gets.chomp
+
+      kisi = Kisi.new(veriler)
+      defter.ekle(kisi)
+      defter.kaydet
+
+      puts "Kayıt edildi"
+      puts "#{kisi.ad} #{kisi.soyad} (#{kisi.yas} - #{kisi.sehir}) - #{kisi.tel} <#{kisi.eposta}>"
+    when 3
+      break
+  end
+end

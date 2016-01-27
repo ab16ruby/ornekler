@@ -1,0 +1,1 @@
+require "23-harici_dosya.rb"
