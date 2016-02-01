@@ -6,44 +6,50 @@ require "./../yararli/terminalrenkleri"
 
 using TurkishSupport
 
-adres_defteri = AdresDefteri.new
+ad = AdresDefteri.new
 
-adres_defteri.liste.each { |kisi| puts "#{kisi.ad_soyad} - #{kisi.dtarih.year unless kisi.dtarih.nil?}" }
+puts "Merhaba, Adres defterinize hoş geldiniz."
 
-# adres_defteri.ada_gore_ara("li").each { |kisi| adres_defteri.sil kisi }
-puts "#{TerminalRenkleri::COLOR_YELLOW}Mer#{TerminalRenkleri::COLOR_RED}ha#{TerminalRenkleri::COLOR_GREEN}ba#{TerminalRenkleri::COLOR_NC}"
+def anamenu
+	puts "Lütfen menüden bir seçenek seçiniz:"
 
-#adres_defteri.ekle Kisi.new("Hasan", "Şimşek", dtarih: "1992-01-01", eposta: "hfs@gmail.com")
+	puts "1) Adres Defterinizi Listeleyiniz"
+	puts "2) Yeni Kayıt Ekleyin"
+	puts "3) Adında Arayın"
+	puts "4) Soyadında Arayın"
 
-# adres_defteri.ekle Kisi.new("Oğuz", "Kırçiçek", telefon: "05534405858", sehri: "Sivas")
+	puts "---"
+	puts "Çıkmak için E yazın"
+	puts "---"
+	print "Seçiminiz: "
 
+	gets.chomp.upcase
+end
 
-# adres_defteri.liste.each { |kisi| puts kisi.ad_soyad }
+def listemenu
+	puts "---"
+	puts "Çıkmak için E, Ana Menu için G yazınız"
+	puts "---"
+	print "Seçiminiz: "
 
-# melis = Kisi.new("Melis", "Bozyurt")
+	gets.chomp.upcase
+end
 
-# adres_defteri.ekle Kisi.new("Umurcan", "Görür")
-# adres_defteri.ekle Kisi.new("Serhat", "Kocagöz")
-# adres_defteri.ekle Kisi.new("Ali Fırat", "Ünver")
-# adres_defteri.ekle melis
-# adres_defteri.ekle Kisi.new("Umurcan", "Kocagöz")
+loop do
+	secim = anamenu
+	break if secim == "E"
 
-# adres_defteri.liste.each { |kisi| puts kisi.ad_soyad }
+	case secim
+	when "1"
+		i = 0
+		ad.liste.each do |kisi|
+			puts "#{i.next}) #{kisi.ad_soyad}"
+		end
 
-# puts "-----"
+		secim = listemenu until ["E", "G"].include? secim
 
-# adres_defteri.ada_gore_ara("li").each { |kisi| puts kisi.ad_soyad }
+		secim == "E" ? break : redo
+	when "2"
 
-# melis2 = Kisi.new("Melis", "Bozyurt")
-
-# adres_defteri.sil melis2
-
-# puts "-----"
-
-# adres_defteri.liste.each { |kisi| puts kisi.ad_soyad }
-
-# puts "-----"
-# puts "-----"
-
-# puts melis
-# puts melis2
+	end
+end
