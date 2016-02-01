@@ -1,6 +1,9 @@
 class Menuler
 	class << self
 		def ana
+			print `clear`
+			puts "Merhaba, Adres defterinize hoş geldiniz."
+			puts "---"
 			puts "Lütfen menüden bir seçenek seçiniz:"
 
 			puts "1) Adres Defterinizi Listeleyiniz"
