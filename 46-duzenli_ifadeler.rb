@@ -1,6 +1,6 @@
 ifade1 = /.*\.$/
 ifade2 = Regexp.new( '^[a-z]+$' )
-ifade3 = %r{^[^a-z]+$}
+ifade3 = %r<^[^a-z]+$>
 
 puts ifade1.class, ifade2.class, ifade3.class   # Regexp
 
@@ -11,12 +11,12 @@ ifade2 =~ "boşlukiçermeyenbirmetin"        # => nil
 ifade2 =~ "boslukicermeyenbirmetin"        # 0
 
 "Bu bir cumledir." =~ ifade2               # => nil
-puts "kullanici@eposta.com" =~ /.@/        # 8
+puts "kullanici@eposta.com" =~ /.@/        # 10
 # !~
 
 if "Sait F. Abasıyanık" =~ /\s[A-Z]\.\s/
   puts "Eşleşme bulundu"
-  puts "Eşleşme: #{$&}"                   # Eşleşme:  F.
+  puts "Eşleşme: #{$&}"                   # Eşleşme:  F. 
   puts "Eşleşmeden önce: #{$`}"           # Eşleşmeden önce: Sait
   puts "Eşleşmeden sonra: #{$'}"          # Eşleşmeden sonra: Abasıyanık
 else
@@ -45,3 +45,11 @@ def parse_youtube url
    regex = /(?:.be\/|\/watch\?v=|\/(?=p\/))([\w\/\-]+)/
    url.match(regex)[1]
 end
+
+def is_email? email
+	is_valid_email = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,12})$/
+	!!email.match(is_valid_email)
+end
+
+puts parse_youtube "https://www.youtube.com/watch?v=peL7Qecg3qQ"
+p is_email? "mail@ugorur.com"

@@ -39,3 +39,6 @@ puts case islem
   when "/" then bolme(sayi1, sayi2)
   else "Bu işlemi bilemedim"
 end
+
+
+sayi = topla(sayi, 5) while sayi < 100

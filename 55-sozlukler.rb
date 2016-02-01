@@ -39,7 +39,7 @@ ruby101.keys      # => [:egitmen, :katilimcilar, :etkinlik, :tarih]
 ruby101.values    # => [["Sıtkı Bağdat", "Umurcan Görür"], ["Ali Kara", "Veli Ak", "Ayten Pak", "Nuran Çak"], "Akademik Bilişim", "31 Ocak - 03 Şubat 2015"]
 
 ruby101.fetch(:egitmen)   # => ["Sıtkı Bağdat", "Umurcan Görür"]
-ruby101.fetch(:falan)     # => KeyError: key not found
+#ruby101.fetch(:falan)     # => KeyError: key not found
 ruby101[:falan]           # => nil
 
 ruby101.include? :tarih   # => true
@@ -56,3 +56,20 @@ h1.merge h1   # => {ad: "Ali", soyad: "Kara"}
 
 # Diziden sözlüğe dönüştürme
 [["a",1],["b",2]].to_h    # => {"a"=>1, "b"=>2}
+
+
+def kisi (**bilgiler)
+  puts bilgiler[:adi] unless bilgiler[:adi].nil?
+  puts bilgiler[:soyadi] if bilgiler.include? :soyadi
+  puts bilgiler[:yasi] if bilgiler.include? :yasi
+end
+
+kisi adi: "Umur", soyadi: "Görür"
+kisi adi: "Ahmet", yasi: 27
+kisi soyad: "Recep", adi: "Ahmet", yasi: 27
+
+ogrenci.each do |anahtar, deger|
+  puts "#{anahtar}: #{deger}"
+end 
+
+ogrenci.each  { |anahtar, deger| puts "#{anahtar}: #{deger}" }

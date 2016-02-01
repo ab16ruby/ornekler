@@ -44,10 +44,12 @@ ogrenci2  = Ogrenci.new("Serdar", "Doğruyol", 26)
 
 ogretmen.ogrenci_ekle(ogrenci1)
 ogretmen.ogrenci_ekle(ogrenci2)
+
+puts ogretmen.detay
 ogretmen.ogrenciler
 
 # ogretmen.ogrenci_ekle(ogretmen)
-ogrenci3  = Ogrenci.new(35, "Bağdat", 35) # !> assigned but unused variable - ogrenci3
+# ogrenci3  = Ogrenci.new(35, "Bağdat", 35) # !> assigned but unused variable - ogrenci3
 # ~> -:8:in `initialize': ArgumentError (ArgumentError)
 # ~>  from -:50:in `new'
 # ~>  from -:50:in `<main>'

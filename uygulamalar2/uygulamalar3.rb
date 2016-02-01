@@ -5,8 +5,10 @@ class GeneticCodeError < StandardError
 end
 
 class GEN
+	attr_reader :gen
+
 	def initialize (gen)
-		@gen = gen.chars.upcase
+		@gen = gen.upcase
 		raise GeneticCodeError if invalid?
 	end
 
@@ -22,7 +24,6 @@ class RNA < GEN
 
 	def invalid?
 		@gen !~ /\A[ACGU]+[ACGU]*\Z/
-		raise GeneticCodeError if invalid?
 	end
 end
 
@@ -33,6 +34,28 @@ class DNA < GEN
 
 	def invalid?
 		@gen !~ /\A[ACGT]+[ACGT]*\Z/
-		raise GeneticCodeError if invalid?
 	end
 end
+
+class Canli
+
+	attr_reader :genetic
+
+	def initialize (genetic)
+		@genetic = genetic if genetic.is_a? GEN
+	end
+
+	def is_DNA?
+		@genetic.is_a? DNA
+	end
+
+	def is_RNA?
+		@genetic.is_a? DNA
+	end
+
+end
+
+denean = DNA.new("ACCGTTGC")
+canli = Canli.new(denean)
+
+puts canli.genetic.gen.class

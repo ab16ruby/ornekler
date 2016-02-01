@@ -1,5 +1,3 @@
-require 'turkish_support'
-
 # Değişkenler
 metin = "Ruby"
 sayi = 12

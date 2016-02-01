@@ -18,6 +18,7 @@ aralik.each {|i| puts "Değer: #{i}" if i > 4}
 # Değer: 8
  
 aralik2 = aralik.reject {|v| (v % 2) == 0}
+aralik2 = aralik.reject {|v| v.even? }
 puts aralik2.inspect # [3, 5, 7]
 puts aralik2.class # Array
  
