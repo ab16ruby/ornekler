@@ -1,6 +1,3 @@
-require "json"
-require "yaml"
-
 class Kisi
 	attr_accessor :adi, :soyadi, :sehri, :dtarih, :telefon, :eposta
 
@@ -30,5 +27,9 @@ class Kisi
 	def cikti
 		veriler = [@adi, @soyadi, @sehri, @dtarih, @telefon, @eposta]
 		block_given? ? yield(*veriler) : veriler.join(',')
+	end
+
+	def ad_soyad
+		"#{@adi} #{@soyadi}"
 	end
 end
