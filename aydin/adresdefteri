@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
 require "turkish_support"
+require "date"
 require "./adres-defteri"
 require "./menuler"
-require "./../yararli/terminalrenkleri"
 
 using TurkishSupport
 
@@ -17,10 +17,25 @@ loop do
 
 	case secim
 	when "1"
-		i = 0
-		ad.liste.each { |kisi| puts "#{i.next}) #{kisi.ad_soyad}" }
+		Menuler.kisi_liste ad.liste
 	when "2"
+		adi = Menuler.ad until Menuler.ad? adi
+		soyad = Menuler.soyad until Menuler.soyad? soyad
+		sehir = Menuler.sehir until Menuler.sehir? sehir
+		dtarih = Menuler.dtarih until Menuler.dtarih? dtarih
+		telefon = Menuler.telefon until Menuler.telefon? telefon
+		eposta = Menuler.eposta until Menuler.eposta? eposta
 
+		kisi = Kisi.girdi([adi, soyad, sehir, dtarih.empty? ? nil : Date.parse(dtarih), telefon, eposta].join(','))
+		ad.ekle kisi
+
+		puts "#{kisi.ad_soyad} adres defterinize eklendi."
+	when "3"
+		adi = Menuler.ad until Menuler.ad? adi
+		Menuler.kisi_liste ad.ada_gore_ara(adi)
+	when "4"
+		soyad = Menuler.soyad until Menuler.soyad? soyad
+		Menuler.kisi_liste ad.soyada_gore_ara(soyad)
 	end
 
 	secim = Menuler.liste until Menuler.liste? secim
