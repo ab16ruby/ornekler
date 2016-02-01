@@ -1,12 +1,7 @@
-# File.open("adres_defteri", "a") do |dosya|
-#   dosya.puts "Umurcan,Görür,05384319043,Eskişehir"
-#   dosya.puts "Umurcan,Görür,05384319043,Eskişehir"
-#   dosya.puts "Umurcan,Görür,05384319043,Eskişehir"
-#   dosya.puts "Umurcan,Görür,05384319043,Eskişehir"
-#   dosya.puts "Umurcan,Görür,05384319043,Eskişehir"
-#   dosya.puts "Umurcan,Görür,05384319043,Eskişehir"
-#   dosya.print "Umurcan,Görür,05384319043,Eskişehir"
-# end
+File.open("adres_defteri", "w+") do |dosya|
+  dosya.readlines.each { |satir| puts satir }
+  dosya.puts "Umurcan,Görür,05384319043,Eskişehir"
+end
 
 # class Kisi
 
