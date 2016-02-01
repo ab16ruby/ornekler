@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+require "turkish_support"
+require "./adres-defteri"
+require "./../yararli/terminalrenkleri"
+
+using TurkishSupport
+
+adres_defteri = AdresDefteri.new
+
+adres_defteri.liste.each { |kisi| puts "#{kisi.ad_soyad} - #{kisi.dtarih.year unless kisi.dtarih.nil?}" }
+
+# adres_defteri.ada_gore_ara("li").each { |kisi| adres_defteri.sil kisi }
+puts "#{TerminalRenkleri::COLOR_YELLOW}Mer#{TerminalRenkleri::COLOR_RED}ha#{TerminalRenkleri::COLOR_GREEN}ba#{TerminalRenkleri::COLOR_NC}"
+
+#adres_defteri.ekle Kisi.new("Hasan", "Şimşek", dtarih: "1992-01-01", eposta: "hfs@gmail.com")
+
+# adres_defteri.ekle Kisi.new("Oğuz", "Kırçiçek", telefon: "05534405858", sehri: "Sivas")
+
+
+# adres_defteri.liste.each { |kisi| puts kisi.ad_soyad }
+
+# melis = Kisi.new("Melis", "Bozyurt")
+
+# adres_defteri.ekle Kisi.new("Umurcan", "Görür")
+# adres_defteri.ekle Kisi.new("Serhat", "Kocagöz")
+# adres_defteri.ekle Kisi.new("Ali Fırat", "Ünver")
+# adres_defteri.ekle melis
+# adres_defteri.ekle Kisi.new("Umurcan", "Kocagöz")
+
+# adres_defteri.liste.each { |kisi| puts kisi.ad_soyad }
+
+# puts "-----"
+
+# adres_defteri.ada_gore_ara("li").each { |kisi| puts kisi.ad_soyad }
+
+# melis2 = Kisi.new("Melis", "Bozyurt")
+
+# adres_defteri.sil melis2
+
+# puts "-----"
+
+# adres_defteri.liste.each { |kisi| puts kisi.ad_soyad }
+
+# puts "-----"
+# puts "-----"
+
+# puts melis
+# puts melis2
