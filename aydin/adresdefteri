@@ -2,6 +2,7 @@
 
 require "turkish_support"
 require "./adres-defteri"
+require "./menuler"
 require "./../yararli/terminalrenkleri"
 
 using TurkishSupport
@@ -10,33 +11,8 @@ ad = AdresDefteri.new
 
 puts "Merhaba, Adres defterinize hoş geldiniz."
 
-def anamenu
-	puts "Lütfen menüden bir seçenek seçiniz:"
-
-	puts "1) Adres Defterinizi Listeleyiniz"
-	puts "2) Yeni Kayıt Ekleyin"
-	puts "3) Adında Arayın"
-	puts "4) Soyadında Arayın"
-
-	puts "---"
-	puts "Çıkmak için E yazın"
-	puts "---"
-	print "Seçiminiz: "
-
-	gets.chomp.upcase
-end
-
-def listemenu
-	puts "---"
-	puts "Çıkmak için E, Ana Menu için G yazınız"
-	puts "---"
-	print "Seçiminiz: "
-
-	gets.chomp.upcase
-end
-
 loop do
-	secim = anamenu
+	secim = Menuler.ana until Menuler.ana? secim
 	break if secim == "E"
 
 	case secim
@@ -46,7 +22,7 @@ loop do
 			puts "#{i.next}) #{kisi.ad_soyad}"
 		end
 
-		secim = listemenu until ["E", "G"].include? secim
+		secim = Menuler.liste until Menuler.liste? secim
 
 		secim == "E" ? break : redo
 	when "2"
