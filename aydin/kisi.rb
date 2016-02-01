@@ -28,6 +28,7 @@ class Kisi
 	end
 
 	def cikti
-		block_given? ? yield(@adi, @soyadi, @sehri, @dtarih, @telefon, @eposta) : [@adi,@soyadi,@sehri,@dtarih,@telefon,@eposta].join(',')
+		veriler = [@adi, @soyadi, @sehri, @dtarih, @telefon, @eposta]
+		block_given? ? yield(*veriler) : veriler.join(',')
 	end
 end
